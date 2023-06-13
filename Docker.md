@@ -29,7 +29,7 @@ version: '3'
 # 在服务下修改你需要的环境
 services:
   mysql:
-  	# 设置镜像
+    # 设置镜像
     image: mysql:latest
     # 设置环境变量
     environment:
