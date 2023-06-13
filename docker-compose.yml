@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      # 数据库还原目录 可将需要还原的sql文件放在这里
+      - mysql-init:/docker-entrypoint-initdb.d
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  mysql-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: F:\DockerData\mysql-data
+  mysql-init:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: F:\DockerData\mysql-init
+  mongo-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: F:\DockerData\mongo-data
+  redis-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: F:\DockerData\redis-data
