@@ -6,4 +6,4 @@
 
 [Apifox简要介绍](./Apifox.md)
 
-[Apifox案例介绍](./Apifox Example.md)
+[Apifox案例介绍](./ApifoxExample.md)
